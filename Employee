@@ -1,0 +1,31 @@
+/**
+ * Created by marshallchappell on 2/19/15.
+ */
+public class Employee {
+    private String firstName, lastName;
+    private int monthlySalary, monthsOfPayment;
+    double yearlySalary;
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public int getMonthlySalary() {
+        return monthlySalary;
+    }
+
+    public int getMonthsOfPayment() {
+        return monthsOfPayment;
+    }
+
+    public Employee(String fName, String lName, int moSalary, int monsOfPayment){
+        this.firstName = fName;
+        this.lastName = lName;
+        this.monthlySalary = moSalary;
+        this.monthsOfPayment = monsOfPayment;
+    }
+}
