@@ -1,0 +1,62 @@
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Scanner;
+
+/**
+ * Created by marshallchappell on 2/18/15.
+ */
+public class Salary {
+    public static void main(String[] args)throws IOException {
+        Scanner keyboard = new Scanner(System.in);
+        int response, monthlySalary, monthsOfPmt, count = 0;
+        String fName, lName;
+
+        System.out.println("New Employee? (y = 1/n = 0):");
+        response = keyboard.nextInt();
+
+        keyboard.nextLine();
+
+        Employee[] employeeArray = new Employee[10];
+
+        while(response != 0){
+            count++;
+
+            System.out.print("First Name: ");
+            fName = keyboard.nextLine();
+
+            System.out.print("Last Name: ");
+            lName = keyboard.nextLine();
+
+            System.out.print("What is the Monthly Salary: ");
+            monthlySalary = keyboard.nextInt();
+
+            System.out.print("How long in months have you been paid: ");
+            monthsOfPmt = keyboard.nextInt();
+
+            employeeArray[count-1] = new Employee(fName,lName,monthlySalary,monthsOfPmt);
+            printEmployee(employeeArray[count-1]);
+
+            System.out.println("\nNew Employee? (y = 1/n = 0):");
+            response = keyboard.nextInt();
+
+            keyboard.nextLine();
+
+        }
+    }
+
+    public static double calculateYrlySalary(Employee emp){
+        return emp.yearlySalary = (emp.getMonthlySalary() * emp.getMonthsOfPayment());
+    }
+
+    public static void printEmployee(Employee emp)throws IOException{
+        File file = new File("txtFile.txt");
+        FileWriter writer = new FileWriter(file,true);
+        PrintWriter printer = new PrintWriter(writer);
+        printer.println(emp.getFirstName()+"\t"+emp.getLastName()+"\t"+emp.getMonthlySalary()+"\t"+emp.getMonthsOfPayment()+"\t"+calculateYrlySalary(emp));
+
+
+        writer.close();
+    }
+}
